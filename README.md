@@ -57,9 +57,6 @@ Dichas funciones requieren de los siguientes parámetros:
     ans = Well-graded gravel with silt and sand
     ```
 
-
-
-
 - Obtener nombre de grupo de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino.
 
     >```matlab
