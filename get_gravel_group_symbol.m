@@ -1,42 +1,42 @@
-function c = get_gravel_classification( pfines, cu, cc, fines, gsymbol, psand )
-%GET_GRAVEL_CLASSIFICATION Retorna la clasificación de la grava.
-%   C = GET_GRAVEL_CLASSIFICATION(PFINES, CU, CC, FINES, GSYMBOL, PSAND)
-%   retorna la clasificación de la grava con PFINES porcentaje de finos, CU
-%   y CC cantidades de Cu y Cc respectivamente, tipo de finos FINES,
-%   símbolo de grupo GSYMBOL y porcentaje de arena PSAND.
+function c = get_gravel_group_symbol( pfines, cu, cc, fines)
+%GET_GRAVEL_GROUP_SYMBOL Retorna el símbolo del grupo de la grava.
+%   C = GET_GRAVEL_GROUP_SYMBOL(PFINES, CU, CC, FINES) retorna el símbolo
+%   del grupo de la grava con PFINES porcentaje de finos, CU
+%   y CC cantidades de Cu y Cc respectivamente y tipo de finos FINES.
 %
 %   PFINES: Número entre 0 y 100 [%].
 %   CU: Número entre 0 y 100.
 %   CC: Número entre 0 y 100.
 %   FINES: String (ML, MH, CL-CH, CL-ML, CL-CH, CL-ML).
-%   GSYMBOL: String.
-%   PSAND: Número entre 0 y 100 [%].
 
     % Se obtienen los índices según los parámetros de la clasificación
     f = indx_fines_p(pfines);
     cucc = indx_cucc(cu, cc, 0);
     tf = indx_fines_n(fines);
-    gs = indx_group_symbol(gsymbol, 0);
-    ps = indx_sg_percentage(psand, 1);
-    t_prop = [f, cucc, tf, gs, ps];
+    t_prop = [f, cucc, tf, -1, -1];
     
     % Se carga la lista de grupos para las gravas
     try
         gravel_list = load('gravel_groupname.mat');
+    catch ME
+        error('Gravel group does not exist, please execute the following command: generate_groupnames');
+    end
     gravel_list = gravel_list.list;
     gravel_list_size = length(gravel_list);
     
     % Se busca el elemento en la lista
     for i=1:gravel_list_size
         propr = gravel_list{i,1}; % Se obtienen las propiedades del grupo
-        if isequal(t_prop, propr)
-            c = gravel_list{i,2};
+        if isequal_gs(t_prop, propr)
+            indx = gravel_list{i,1};
+            indx = indx(4);
+            c = symbol_group_indx(indx);
             return
         end
     end
     
     % Si no se encuentra se lanza error
-    error('Gravel classification does not exist');
+    error('Gravel classification (group symbol) does not exist');
 
 end
 
