@@ -25,14 +25,6 @@ Dichas funciones requieren de los siguientes parámetros:
 ```
 
 ```matlab
->>> get_gravel_group_symbol( pfines, cu, cc, fines )
-    pfines: Porcentaje de finos en el suelo, entre 0 y 100.
-    cu: Cantidad de Cu en la muestra, entre 0 y 100.
-    cc: Cantidad de Cc en la muestra, entre 0 y 100.
-    fines: Nombre del fino, string.
-```
-
-```matlab
 >>> get_sand_group_name( pfines, cu, cc, fines, pgravel )
     pfines: Porcentaje de finos en el suelo, entre 0 y 100.
     cu: Cantidad de Cu en la muestra, entre 0 y 100.
@@ -49,19 +41,76 @@ Dichas funciones requieren de los siguientes parámetros:
     fines: Nombre del fino, string.
 ```
 
+```matlab
+>>> get_gravel_group_symbol( pfines, cu, cc, fines )
+    pfines: Porcentaje de finos en el suelo, entre 0 y 100.
+    cu: Cantidad de Cu en la muestra, entre 0 y 100.
+    cc: Cantidad de Cc en la muestra, entre 0 y 100.
+    fines: Nombre del fino, string.
+```
+
 ## Ejemplos
-- Obtener clasificación de una grava con 8% de finos y 15% de arena, Cu=7 y Cc=2.4, el fino es ML y el símbolo del grupo es GW-GM.:
+- Obtener nombre de grupo de una grava con 8% de finos y 15% de arena, Cu=7 y Cc=2.4, el fino es ML:
 
     >```matlab
-       >>>> get_gravel_classification(8, 7, 2.4, 'ML', 'GW-GM', 15)
+       >>>> get_gravel_group_name(8, 7, 2.4, 'ML', 15)
     ans = Well-graded gravel with silt and sand
-       
     ```
     
-- Obtener clasificación de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino y el símbolo del grupo es GW:
+- Obtener nombre de grupo de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino.
 
     >```matlab
-       >>>> get_gravel_classification(8, 7, 2.4, 'ML', 'GW-GM', 15)
-    ans = Well-graded gravel with silt and sand
-       
+       >>>> get_gravel_group_name(4, 2, 0.8, '', 13)
+    ans = Poorly graded gravel
     ```
+    
+- Obtener nombre de grupo de una grava con 25% de finos, sin Cu o Cc, con fino CL-ML y 19% de arena:
+
+    >```matlab
+       >>>> get_gravel_group_name(25, 0, 0, 'CL-ML', 19)
+    ans = Silty, clayey gravel with sand    
+    ```
+    
+- Obtener símbolo de grupo de una grava con 2% de finos, Cu=8.5 y Cc=1.2, sin fino definido:
+
+    >```matlab
+       >>>> get_gravel_group_symbol(2, 8.5, 1.2, '')
+    ans = GW    
+    ```
+
+- Obtener símbolo de grupo de una grava con 9.9% de finos, Cu=1.1 y Cc=6.6, con fino CL-CH:
+
+    >```matlab
+       >>>> get_gravel_group_symbol(9.9, 1.1, 6.6, 'CL-CH')
+    ans = GP-GC    
+    ```
+    
+- Obtener nombre de grupo de una arena con 30% de finos y 3% de grava, Cu y Cc sin definir, el fino es CL:
+
+    >```matlab
+       >>>> get_sand_group_name(30, 0, 0, 'CL', 3)
+    ans = Clayey sand
+
+- Obtener nombre de grupo de una arena con 3% de finos y 44% de grava, Cu=10 y Cc=1.5, fino sin definir:
+
+    >```matlab
+       >>>> get_sand_group_name(3, 10, 1.5, '', 44)
+    ans = Well-graded sand with gravel
+    
+- Obtener nombre de grupo de una arena con 7% de finos y 3% de grava, Cu=4 y Cc=0.98, fino MH:
+
+    >```matlab
+       >>>> get_sand_group_name(7, 4, 0.98, 'MH', 3)
+    ans = Poorly graded sand with silt
+    
+- Obtener símbolo de grupo de una arena con 7% de finos, Cu=4 y Cc=0.98, fino MH:
+
+    >```matlab
+       >>>> get_sand_group_symbol(7, 4, 0.98, 'MH')
+    ans = SP-SM
+    
+## Autor
+Pablo Pizarro, 2016.
+
+Si tienes alguna sugerencia envíame un correo a: [pablo.pizarro@ing.uchile.cl](mailto:pablo.pizarro@ing.uchile.cl), o sencillamente ten la libertad de enviar un _pull request_.
+    

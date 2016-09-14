@@ -30,7 +30,7 @@ function c = get_sand_group_name( pfines, cu, cc, fines, pgravel )
     % Se busca el elemento en la lista
     for i=1:sand_list_size
         propr = sand_list{i,1}; % Se obtienen las propiedades del grupo
-        if isequal_gs(t_prop, propr)
+        if isequal_gn(t_prop, propr)
             c = sand_list{i,2};
             return
         end
