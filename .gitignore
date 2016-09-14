@@ -1,0 +1,5 @@
+# Archivos residuales matlab
+*.asm
+
+# Archivos residuales vim
+*.swp
