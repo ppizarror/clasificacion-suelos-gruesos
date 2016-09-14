@@ -57,7 +57,6 @@ Dichas funciones requieren de los siguientes parámetros:
     ans = Well-graded gravel with silt and sand
     ```
     
-
 - Obtener nombre de grupo de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino.
 
     >```matlab
@@ -69,7 +68,7 @@ Dichas funciones requieren de los siguientes parámetros:
 
     >```matlab
        >>>> get_gravel_group_name(25, 0, 0, 'CL-ML', 19)
-    ans = Silty, clayey gravel with sand    
+    ans = Silty, clayey gravel with sand
     ```
     
 - Obtener símbolo de grupo de una grava con 2% de finos, Cu=8.5 y Cc=1.2, sin fino definido:
