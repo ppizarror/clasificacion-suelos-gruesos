@@ -23,9 +23,6 @@ function c = get_gravel_classification( pfines, cu, cc, fines, gsymbol, psand )
     % Se carga la lista de grupos para las gravas
     try
         gravel_list = load('gravel_groupname.mat');
-    catch ME
-        error('Gravel group does not exist, please execute the following command: generate_groupnames');
-    end
     gravel_list = gravel_list.list;
     gravel_list_size = length(gravel_list);
     

@@ -21,7 +21,11 @@ function c = get_sand_classification( pfines, cu, cc, fines, gsymbol, pgravel )
     t_prop = [f, cucc, tf, gs, ps];
     
     % Se carga la lista de grupos para las gravas
-    sand_list = load('sand_groupname.mat');
+    try
+        sand_list = load('sand_groupname.mat');
+    catch ME
+        error('Sand group name does not exist, please execute the following command: generate_groupnames');
+    end
     sand_list = sand_list.list;
     sand_list_size = length(sand_list);
     
