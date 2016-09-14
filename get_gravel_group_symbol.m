@@ -1,8 +1,9 @@
 function c = get_gravel_group_symbol( pfines, cu, cc, fines)
 %GET_GRAVEL_GROUP_SYMBOL Retorna el símbolo del grupo de la grava.
 %   C = GET_GRAVEL_GROUP_SYMBOL(PFINES, CU, CC, FINES) retorna el símbolo
-%   del grupo de la grava con PFINES porcentaje de finos, CU
-%   y CC cantidades de Cu y Cc respectivamente y tipo de finos FINES.
+%   del grupo de la grava con PFINES porcentaje de finos, CU y CC valores
+%   del coeficiente de uniformidad y coeficiente de forma respectivamente y
+%   tipo de finos FINES.
 %
 %   PFINES: Número entre 0 y 100 [%].
 %   CU: Número entre 0 y 100.

@@ -1,5 +1,5 @@
 # Clasificación de suelos gruesos
-Esta libreria de **Matlab** permite obtener la clasificación de un suelo grueso en base a una serie de parametros como pueden ser el porcentaje de fino en una muestra, las cantidades de *Cu* y *Cc*, el nombre del fino y el símbolo del grupo.
+Esta libreria de **Matlab** permite obtener la clasificación de un suelo grueso en base a una serie de parametros como pueden ser el porcentaje de fino en una muestra, los valores del coeficiente de uniformidad *Cu* y coeficiente de forma *Cc*, el nombre del fino y el símbolo del grupo.
 
 ## Cómo usar
 Para usar esta librería debe ejecutar los siguientes pasos:
@@ -18,8 +18,8 @@ Dichas funciones requieren de los siguientes parámetros:
 ```matlab
 >>> get_gravel_group_name( pfines, cu, cc, fines, psand )
     pfines: Porcentaje de finos en el suelo, entre 0 y 100.
-    cu: Cantidad de Cu en la muestra, entre 0 y 100.
-    cc: Cantidad de Cc en la muestra, entre 0 y 100.
+    cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
+    cc: Valor del coef. de forma en la muestra, entre 0 y 100.
     fines: Nombre del fino, string.
     psand: Porcentaje de arena en el suelo, entre 0 y 100.
 ```
@@ -27,8 +27,8 @@ Dichas funciones requieren de los siguientes parámetros:
 ```matlab
 >>> get_sand_group_name( pfines, cu, cc, fines, pgravel )
     pfines: Porcentaje de finos en el suelo, entre 0 y 100.
-    cu: Cantidad de Cu en la muestra, entre 0 y 100.
-    cc: Cantidad de Cc en la muestra, entre 0 y 100.
+    cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
+    cc: Valor del coef. de forma en la muestra, entre 0 y 100.
     fines: Nombre del fino, string.
     pgravel: Porcentaje de grava en el suelo, entre 0 y 100.
 ```
@@ -36,16 +36,16 @@ Dichas funciones requieren de los siguientes parámetros:
 ```matlab
 >>> get_sand_group_symbol( pfines, cu, cc, fines )
     pfines: Porcentaje de finos en el suelo, entre 0 y 100.
-    cu: Cantidad de Cu en la muestra, entre 0 y 100.
-    cc: Cantidad de Cc en la muestra, entre 0 y 100.
+    cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
+    cc: Valor del coef. de forma en la muestra, entre 0 y 100.
     fines: Nombre del fino, string.
 ```
 
 ```matlab
 >>> get_gravel_group_symbol( pfines, cu, cc, fines )
     pfines: Porcentaje de finos en el suelo, entre 0 y 100.
-    cu: Cantidad de Cu en la muestra, entre 0 y 100.
-    cc: Cantidad de Cc en la muestra, entre 0 y 100.
+    cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
+    cc: Valor del coef. de forma en la muestra, entre 0 y 100.
     fines: Nombre del fino, string.
 ```
 

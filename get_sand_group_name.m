@@ -2,8 +2,8 @@ function c = get_sand_group_name( pfines, cu, cc, fines, pgravel )
 %GET_SAND_GROUP_NAME Retorna la clasificación de la arena.
 %   C = GET_SAND_GROUP_NAME(PFINES, CU, CC, FINES, PSAND)
 %   retorna el nombre del grupo de la arena con PFINES porcentaje de finos, CU
-%   y CC cantidades de Cu y Cc respectivamente, tipo de finos FINES y
-%   porcentaje de grava PGRAVEL.
+%   y CC valores del coeficiente de uniformidad y coeficiente de forma
+%   respectivamente, tipo de finos FINES y porcentaje de grava PGRAVEL.
 %
 %   PFINES: Número entre 0 y 100 [%].
 %   CU: Número entre 0 y 100.
