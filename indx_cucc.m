@@ -14,20 +14,16 @@ function indx = indx_cucc(cu, cc, t)
     end
     
     if t==0 % Gravas
-        if and(cu>=4, 1<=cc<=3) %#ok<*CHAIN>
+        if and(cu>=4, and(1<=cc, cc<=3)) %#ok<*CHAIN>
             indx = 0;
-        elseif or(or(or(cu<4,cc<1), and(cu<4, cc<1)), cc>3)
-            indx = 1;
         else
-            error('Invalid gravel Cu and Cc values.');
+            indx = 1;
         end
     elseif t==1 % Arenas
-        if and(cu>=6, 1<=cc<=3) %#ok<*CHAIN>
+        if and(cu>=6, and(1<=cc, cc<=3)) %#ok<*CHAIN>
             indx = 2;
-        elseif or(or(or(cu<6,cc<1), and(cu<6, cc<1)), cc>3)
-            indx = 3;
         else
-            error('Invalid sand Cu and Cc values.');
+            indx = 3;
         end
     else % Tipo no válido
         error('Parameter t not valid, should be 0 or 1 for gravel and sand respectively.');

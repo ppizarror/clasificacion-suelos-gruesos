@@ -1,5 +1,12 @@
 # Archivos residuales matlab
 *.asm
+*.asv
 
 # Archivos residuales vim
-*.swp
+*.swp}
+
+# Archivos de testeo
+test.xls
+test.xlsx
+test2.txt
+~$*
