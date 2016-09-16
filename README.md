@@ -158,6 +158,72 @@ Las funciones disponibles son las siguientes:
 ```
 
 ## Ejemplos
+<a id="datos"></a>
+- Cargar el archivo de datos granulométricos '<a href="https://github.com/ppizarror/clasificacion-suelos-gruesos/blob/master/example_data.txt">example_data.txt</a>':
+
+    >```matlab
+       >>>> data = load_granulometry_data('example_data.txt');
+    ```
+
+<a id="tabla_granum"></a>
+- Crear una tabla granulométrica a partir de los <a href="#datos">datos cargados</a>.
+
+    >```matlab
+       >>>> granulometry_table = create_granulometry_table(data);
+    ```
+ 
+- Imprimir en consola la <a href="tabla_granum">tabla granulométrica</a> cargada:
+
+    >```matlab
+       >>>> print_cell_table(granulometry_table);
+          1.0000   25.4000    94.0000   10.5870    10.5870   89.4130
+          4.0000    4.7500   225.0000    8.1023    18.6892   81.3108
+         10.0000    2.0000   750.0000   27.0076    45.6968   54.3032
+         20.0000    0.8500   405.0000   14.5841    60.2809   39.7191
+         40.0000    0.4250   165.0000    5.9417    66.2225   33.7775
+         60.0000    0.2500   189.0000    6.8059    73.0284   26.9716
+        100.0000    0.1500   174.0000    6.2658    79.2942   20.7058
+        200.0000    0.0750   336.0000   12.0994    91.3936    8.6064
+        0           0        239.0000    8.6064   100.0000    0.0000
+    ```
+
+- Obtener la cantidad de gravas, finos y arena de una <a href="tabla_granum">tabla granulométrica</a>:
+
+    >```matlab
+       >>>> get_composition_list(granulometry_table);
+    ans = [18.6892   72.7044    8.6064] 
+    ```
+
+- Obtener los valores D10, D30, D60, Dn a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada:
+
+    >```matlab
+       >>>> calculate_d(granulometry_table, 10)
+    ans = 0.083638 
+    
+    >>>> calculate_d(granulometry_table, 30)
+    ans = 0.327870
+    
+    >>>> calculate_d(granulometry_table, 60)
+    ans = 2.580067   
+    ```
+
+- Obtener los parámetros Cc (coef. de forma) y Cu (coef. de uniformidad) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada:
+
+    >```matlab
+       >>>> calculate_cc(granulometry_table)
+    ans = 0.498159
+    
+    >>>> calculate_cu(granulometry_table)
+    ans = 30.847875
+
+
+- Plotear una <a href="tabla_granum">tabla granulométrica</a> cargada, con escala de diámetro en milímetros (mm).
+
+    >```matlab
+       >>>> plot_granulometry_table(table, 'mm');
+    ```
+    ><img src='https://github.com/ppizarror/ppizarror.github.io/blob/master/resources/images/granulometric-graph.png?raw=true' alt='Curva de distribución' height='40%'>
+
 - Obtener nombre de grupo de una grava con 8% de finos y 15% de arena, Cu=7 y Cc=2.4, el fino es ML:
 
     >```matlab
