@@ -96,6 +96,8 @@ header h2 {
 
 #container .inner img {
   max-width: 100%;
+  margin-top: -15px;
+  margin-bottom: -10px;
 }
 
 #downloads {
