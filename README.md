@@ -1,40 +1,64 @@
 # Clasificación de suelos gruesos
-Esta libreria de **Matlab** permite obtener la clasificación de un suelo grueso en base a una serie de parametros como pueden ser el porcentaje de fino en una muestra, los valores del coeficiente de uniformidad *Cu* y coeficiente de forma *Cc*, el nombre del fino y el símbolo del grupo.
+Esta libreria de **Matlab** permite obtener la clasificación de un suelo grueso a partir de una tabla granulométrica, la cual es cargada desde un archivo, o bien a partir de una serie de parametros como son el porcentaje de fino en una muestra, los valores del coeficiente de uniformidad *Cu* y coeficiente de forma *Cc*, el nombre del fino y el símbolo del grupo.
 
-## Cómo usar
-Para usar esta librería debe ejecutar los siguientes pasos:
-
-Generar los archivos binarios para clasificar los suelos, para ello ejecute solo una vez el siguiente comando en **Matlab**:
+## Antes de partir
+Una vez que descargue esta libreria tiene que abrir con **Matlab** la carpeta descargada, luego, debe ejecutar el siguiente comando en consola:
 ```matlab
 >>> generate_groupnames
 ```
 
-Esta función creará los archivos *gravel_groupname.mat* y *sand_groupname.mat* los cuales contendrán listas con valores para poder ser usados en el futuro de forma rápida.
+Esta función creará los archivos binarios *gravel_groupname.mat* y *sand_groupname.mat* los cuales contendrán listas con las tablas de clasificación para poder ejecutar el resto de las funciones del programa.
 
-Una vez hecho lo anterior se puede obtener el nombre del grupo de las gravas con la función `get_gravel_group_name` y de las arenas con la función `get_sand_group_name`. Para obtener el símbolo del grupo de las gravas se cuenta con la función `get_gravel_group_symbol` y `get_sand_group_name` para el caso de las arenas.
+## Funciones disponibles
 
-Dichas funciones requieren de los siguientes parámetros:
+Una vez que los archivos *gravel_groupname.mat* y *sand_groupname.mat* hayan sido creados puede hacer uso de las funciones del programa.
+
+Las funciones disponibles son las siguientes:
+
++ ```load_granulometry_data```: Cargar un archivo de datos granulométricos.
+ >```matlab
+>>>> load_granulometry_data( file )
+    file: String con la ubicación del archivo a cargar.
+    
+    Retorna: Lista con los valores cargados y parseados a números.
+```
++ ```create_granulometry_table```: Crear una tabla granulométrica.
++ ```print_cell_table```: Imprimir en consola la tabla granulométrica.
++ ```get_composition_list```: Obtener la cantidad de gravas, finos y arena de una tabla granulométrica.
++ ```calculate_d```: Obtener los valores D10, D30, D60, Dn.
++ ```calculate_cc```: Calcular el parametro del coeficiente de forma a partir de una tabla granulométrica.
++ ```calculate_cu```: Calcular el parametro del coeficiente de uniformidad a partir de una tabla granulométrica.
++ ```plot_granulometry_table```: Plotear una curva granulométrica.
++ ```get_classification_groupname```: Obtener el nombre de grupo de un suelo (clasificación) a partir de una tabla granulométrica.
++ ```get_gravel_group_name```: Obtener el nombre de grupo de una grava a partir de una serie de parámetros.
++ ```get_sand_group_name```: Obtener el nombre de grupo de una arena a partir de una serie de parámetros.
++ ```get_classification_groupsymbol```: Obtener el símbolo de grupo de un suelo (clasificación) a partir de una tabla granulométrica.
++ ```get_gravel_group_symbol```: Obtener el simbolo de grupo de una grava a partir de una serie de parámetros.
++ ```get_sand_group_symbol```: Obtener el simbolo de grupo de una arena a partir de una serie de parámetros.
+
+### Detalles de las funciones
 
 ```matlab
->>> get_gravel_group_name( pfines, cu, cc, fines, psand )
-    pfines: Porcentaje de finos en el suelo, entre 0 y 100.
-    cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
-    cc: Valor del coef. de forma en la muestra, entre 0 y 100.
-    fines: Nombre del fino, string.
-    psand: Porcentaje de arena en el suelo, entre 0 y 100.
+>>> create_granulometry_table( data )
+    data: Datos granulométricos resultantes de la función load_granulometry_data.
+    
+    Retorna: Tabla granulométrica usada por la mayoría de las funciones.
 ```
 
 ```matlab
->>> get_sand_group_name( pfines, cu, cc, fines, pgravel )
-    pfines: Porcentaje de finos en el suelo, entre 0 y 100.
-    cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
-    cc: Valor del coef. de forma en la muestra, entre 0 y 100.
-    fines: Nombre del fino, string.
-    pgravel: Porcentaje de grava en el suelo, entre 0 y 100.
+>>> print_cell_table( c )
+    c: Tabla a imprimir.
 ```
 
 ```matlab
->>> get_sand_group_symbol( pfines, cu, cc, fines )
+>>> get_composition_list( granulometry_table )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    
+    Retorna: Lista de la forma [%gravas, %arena, %fino]
+```
+
+```matlab
+>>> get_gravel_group_symbol( pfines, cu, cc, fines )
     pfines: Porcentaje de finos en el suelo, entre 0 y 100.
     cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
     cc: Valor del coef. de forma en la muestra, entre 0 y 100.

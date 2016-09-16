@@ -5,6 +5,9 @@ function composition_list = get_composition_list( granulometry_table )
 %   COMPOSITION_LIST=GET_COMPOSITION_LIST(GRANULOMETRY_TABLE) retorna la
 %   lista de composición [gravas, arena, fino) a partir de una tabla de
 %   granulometría retornada de la funcipón create_granulometry_table.
+%
+%   granulometry_table: Tabla granulométrica resultante de
+%   create_granulometry_table.
 
     decr = true; % Indica que se decrece en número de malla
     

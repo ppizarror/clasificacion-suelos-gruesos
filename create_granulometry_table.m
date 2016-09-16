@@ -5,6 +5,9 @@ function table = create_granulometry_table( data )
 %
 %   TABLE=CREATE_GRANULOMETRY_TABLE(DATA) crea la tabla de granulometría a
 %   partir de los datos granulométricos almacenados en la lista DATA.
+%
+%   data: Datos granulométricos resultantes de la función
+%   load_granulometry_data.
 
     if ischar(data)
         error('Data must be an cell object, please use load_granulometry_data return value as parameter.');

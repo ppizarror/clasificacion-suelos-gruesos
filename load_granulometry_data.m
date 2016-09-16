@@ -4,6 +4,8 @@ function list = load_granulometry_data( file )
 %
 %   LIST = LOAD_GRANULOMETRY_DATA(FILE) carga el archivo file y retorna una
 %   lista con valores.
+%
+%   file: String con la ubicación del archivo a cargar.
 
     % Se carga el archivo
     f_id = fopen(file);
