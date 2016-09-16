@@ -4,6 +4,10 @@ function d = calculate_d( granulometry_table, n )
 %   D=CALCULATE_D(GRANULOMETRY_TABLE, N) calcula el valor característico
 %   D_n para una tabla de granulometría GRANULOMETRY_TABLE retornada por la
 %   función create_granulometry_table
+%
+%   granulometry_table: Tabla granulométrica resultante de
+%   create_granulometry_table.
+%   n: Pocentaje que pasa.
 
     % Se recorre la tabla
     j = -1;

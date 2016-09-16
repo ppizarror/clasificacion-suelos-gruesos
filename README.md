@@ -15,29 +15,31 @@ Una vez que los archivos *gravel_groupname.mat* y *sand_groupname.mat* hayan sid
 
 Las funciones disponibles son las siguientes:
 
-+ ```load_granulometry_data```: Cargar un archivo de datos granulométricos.
- >```matlab
-    >>>> load_granulometry_data( file )
-      file: String con la ubicación del archivo a cargar.
-    
-  >     Retorna: Lista con los valores cargados y parseados a números.
->```
-+ ```create_granulometry_table```: Crear una tabla granulométrica.
-+ ```print_cell_table```: Imprimir en consola la tabla granulométrica.
-+ ```get_composition_list```: Obtener la cantidad de gravas, finos y arena de una tabla granulométrica.
-+ ```calculate_d```: Obtener los valores D10, D30, D60, Dn.
-+ ```calculate_cc```: Calcular el parametro del coeficiente de forma a partir de una tabla granulométrica.
-+ ```calculate_cu```: Calcular el parametro del coeficiente de uniformidad a partir de una tabla granulométrica.
-+ ```plot_granulometry_table```: Plotear una curva granulométrica.
-+ ```get_classification_groupname```: Obtener el nombre de grupo de un suelo (clasificación) a partir de una tabla granulométrica.
-+ ```get_gravel_group_name```: Obtener el nombre de grupo de una grava a partir de una serie de parámetros.
-+ ```get_sand_group_name```: Obtener el nombre de grupo de una arena a partir de una serie de parámetros.
-+ ```get_classification_groupsymbol```: Obtener el símbolo de grupo de un suelo (clasificación) a partir de una tabla granulométrica.
-+ ```get_gravel_group_symbol```: Obtener el simbolo de grupo de una grava a partir de una serie de parámetros.
-+ ```get_sand_group_symbol```: Obtener el simbolo de grupo de una arena a partir de una serie de parámetros.
++ <a href="#function1">```load_granulometry_data```</a>: Cargar un archivo de datos granulométricos.
++ <a href="#function2">```create_granulometry_table```</a>: Crear una tabla granulométrica.
++ <a href="#function3">```print_cell_table```</a>: Imprimir en consola la tabla granulométrica.
++ <a href="#function4">```get_composition_list```</a>: Obtener la cantidad de gravas, finos y arena de una tabla granulométrica.
++ <a href="#function5">```calculate_d```</a>: Obtener los valores D10, D30, D60, Dn.
++ <a href="#function6">```calculate_cc```</a>: Calcular el parametro del coeficiente de forma a partir de una tabla ranulométrica.
++ <a href="#function7">```calculate_cu```</a>: Calcular el parametro del coeficiente de uniformidad a partir de una tabla granulométrica.
++ <a href="#function8">```plot_granulometry_table```</a>: Plotear una curva granulométrica.
++ <a href="#function9">```get_classification_groupname```</a>: Obtener el nombre de grupo de un suelo (clasificación) a partir de una tabla granulométrica.
++ <a href="#function10">```get_gravel_group_name```</a>: Obtener el nombre de grupo de una grava a partir de una serie de parámetros.
++ <a href="#function11">```get_sand_group_name```</a>: Obtener el nombre de grupo de una arena a partir de una serie de parámetros.
++ <a href="#function12">```get_classification_groupsymbol```</a>: Obtener el símbolo de grupo de un suelo (clasificación) a partir de una tabla granulométrica.
++ <a href="#function13">```get_gravel_group_symbol```</a>: Obtener el simbolo de grupo de una grava a partir de una serie de parámetros.
++ <a href="#function14">```get_sand_group_symbol```</a>: Obtener el simbolo de grupo de una arena a partir de una serie de parámetros.
 
 ### Detalles de las funciones
+<a id="function1"></a>
+```matlab
+>>> load_granulometry_data( file )
+    file: String con la ubicación del archivo a cargar.
+    
+    Retorna: Lista con los valores cargados y parseados a números.
+```
 
+<a id="function2"></a>
 ```matlab
 >>> create_granulometry_table( data )
     data: Datos granulométricos resultantes de la función load_granulometry_data.
@@ -45,32 +47,114 @@ Las funciones disponibles son las siguientes:
     Retorna: Tabla granulométrica usada por la mayoría de las funciones.
 ```
 
+<a id="function3"></a>
 ```matlab
 >>> print_cell_table( c )
     c: Tabla a imprimir.
 ```
 
+<a id="function4"></a>
 ```matlab
 >>> get_composition_list( granulometry_table )
     granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
     
-    Retorna: Lista de la forma [%gravas, %arena, %fino]
+    Retorna: Lista de la forma [gravas, arena, fino]
 ```
 
+<a id="function5"></a>
+```matlab
+>>> calculate_d( granulometry_table, n )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    n: Pocentaje que pasa.
+    
+    Retorna: Valor de D_n.
+```
+
+<a id="function6"></a>
+```matlab
+>>> calculate_cc( granulometry_table )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    
+    Retorna: Valor del coeficiente de curvatura.
+```
+
+<a id="function7"></a>
+```matlab
+>>> calculate_cu( granulometry_table )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    
+    Retorna: Valor del coeficiente de uniformidad.
+```
+
+<a id="function8"></a>
+```matlab
+>>> plot_granulometry_table( granulometry_table, diameter_scale )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    diameter_scale: Escala del eje x (eje del diámetro).
+```
+
+<a id="function9"></a>
+```matlab
+>>> get_classification_groupname( granulometry_table, fines )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    fines: Nombre del fino, string (ML, MH, CL-CH, CL-ML, CL-CH, CL-ML).
+
+    Retorna: Nombre de grupo del suelo definido por la tabla granulométrica y su respectivo fino.
+```
+
+<a id="function10"></a>
+```matlab
+>>> get_gravel_group_name( pfines, cu, cc, fines, psand )
+    pfines: Porcentaje de finos en el suelo, entre 0 y 100.
+    cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
+    cc: Valor del coef. de forma en la muestra, entre 0 y 100.
+    fines: Nombre del fino, string.
+    psand: Porcentaje de arena en el suelo, entre 0 y 100.
+    
+    Retorna: Nombre de grupo de una grava definida por los parámetros.
+```
+
+<a id="function11"></a>
+```matlab
+>>> get_sand_group_name( pfines, cu, cc, fines, pgravel )
+    pfines: Porcentaje de finos en el suelo, entre 0 y 100.
+    cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
+    cc: Valor del coef. de forma en la muestra, entre 0 y 100.
+    fines: Nombre del fino, string.
+    pgravel: Porcentaje de grava en el suelo, entre 0 y 100.
+    
+    Retorna: Nombre de grupo de una arena definida por los parámetros.
+```
+
+<a id="function12"></a>
+```matlab
+>>> get_classification_groupsymbol( granulometry_table, fines )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    fines: Nombre del fino, string (ML, MH, CL-CH, CL-ML, CL-CH, CL-ML).
+
+    Retorna: Símbolo de grupo del suelo definido por la tabla granulométrica y su respectivo fino.
+```
+
+<a id="function13"></a>
 ```matlab
 >>> get_gravel_group_symbol( pfines, cu, cc, fines )
     pfines: Porcentaje de finos en el suelo, entre 0 y 100.
     cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
     cc: Valor del coef. de forma en la muestra, entre 0 y 100.
     fines: Nombre del fino, string.
+    
+    Retorna: Símbolo de grupo de una grava definida por los parámetros.
 ```
 
+<a id="function14"></a>
 ```matlab
->>> get_gravel_group_symbol( pfines, cu, cc, fines )
+>>> get_sand_group_symbol( pfines, cu, cc, fines )
     pfines: Porcentaje de finos en el suelo, entre 0 y 100.
     cu: Valor del coef. de uniformidad en la muestra, entre 0 y 100.
     cc: Valor del coef. de forma en la muestra, entre 0 y 100.
     fines: Nombre del fino, string.
+    
+    Retorna: Símbolo de grupo de una arena definida por los parámetros.
 ```
 
 ## Ejemplos

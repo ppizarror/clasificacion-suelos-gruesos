@@ -1,6 +1,10 @@
 function plot_granulometry_table( granulometry_table, diameter_scale )
 %PLOT_GRANULOMETRY_TABLE plotea el gráfico de la granulometría a partir de
 %una tabla granulométrica retornada por create_granulometry_table.
+%
+%   granulometry_table: Tabla granulométrica resultante de
+%   create_granulometry_table.
+%   diameter_scale: Escala del eje x (eje del diámetro).
 
     lng = length(granulometry_table);
     x = 1:lng-1;

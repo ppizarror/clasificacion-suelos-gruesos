@@ -4,6 +4,9 @@ function cu = calculate_cu( granulometry_table )
 %
 %   CU = CALCULATE_CU(GRANULOMETRY_TABLE) retorna el valor de coeficiente
 %   de uniformidad a partir de una tabla de granulometría.
+%
+%   granulometry_table: Tabla granulométrica resultante de
+%   create_granulometry_table.
 
     d10 = calculate_d(granulometry_table, 10);
     d60 = calculate_d(granulometry_table, 60);
