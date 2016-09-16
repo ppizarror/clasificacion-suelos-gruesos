@@ -17,11 +17,11 @@ Las funciones disponibles son las siguientes:
 
 + ```load_granulometry_data```: Cargar un archivo de datos granulométricos.
  >```matlab
->>>> load_granulometry_data( file )
-    file: String con la ubicación del archivo a cargar.
+    >>>> load_granulometry_data( file )
+        file: String con la ubicación del archivo a cargar.
     
-    Retorna: Lista con los valores cargados y parseados a números.
-```
+  >     Retorna: Lista con los valores cargados y parseados a números.
+>```
 + ```create_granulometry_table```: Crear una tabla granulométrica.
 + ```print_cell_table```: Imprimir en consola la tabla granulométrica.
 + ```get_composition_list```: Obtener la cantidad de gravas, finos y arena de una tabla granulométrica.
