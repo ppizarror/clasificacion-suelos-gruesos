@@ -18,7 +18,7 @@ Las funciones disponibles son las siguientes:
 + ```load_granulometry_data```: Cargar un archivo de datos granulométricos.
  >```matlab
     >>>> load_granulometry_data( file )
-        file: String con la ubicación del archivo a cargar.
+      file: String con la ubicación del archivo a cargar.
     
   >     Retorna: Lista con los valores cargados y parseados a números.
 >```
