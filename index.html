@@ -10,7 +10,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Clasificacion-suelos-gruesos by ppizarror</title>
+    <title>Clasificación de suelos gruesos by ppizarror</title>
   </head>
 
   <body>
@@ -18,7 +18,7 @@
       <div class="inner">
 
         <header>
-          <h1>Clasificacion-suelos-gruesos</h1>
+          <h1>Clasificación de suelos gruesos</h1>
           <h2>Clasificación de suelos gruesos, CI4401-1 Geotecnia 2016, Universidad de Chile</h2>
         </header>
 
@@ -34,68 +34,287 @@
           <h1>
 <a id="clasificación-de-suelos-gruesos" class="anchor" href="#clasificaci%C3%B3n-de-suelos-gruesos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clasificación de suelos gruesos</h1>
 
-<p>Esta libreria de <strong>Matlab</strong> permite obtener la clasificación de un suelo grueso en base a una serie de parametros como pueden ser el porcentaje de fino en una muestra, los valores del coeficiente de uniformidad <em>Cu</em> y coeficiente de forma <em>Cc</em>, el nombre del fino y el símbolo del grupo.</p>
+<p>Esta libreria de <strong>Matlab</strong> permite obtener la clasificación de un suelo grueso a partir de una tabla granulométrica, la cual es cargada desde un archivo, o bien a partir de una serie de parametros como son el porcentaje de fino en una muestra, los valores del coeficiente de uniformidad <em>Cu</em> y coeficiente de forma <em>Cc</em>, el nombre del fino y el símbolo del grupo.</p>
 
 <h2>
-<a id="cómo-usar" class="anchor" href="#c%C3%B3mo-usar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cómo usar</h2>
+<a id="antes-de-partir" class="anchor" href="#antes-de-partir" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Antes de partir</h2>
 
-<p>Para usar esta librería debe ejecutar los siguientes pasos:</p>
-
-<p>Generar los archivos binarios para clasificar los suelos, para ello ejecute solo una vez el siguiente comando en <strong>Matlab</strong>:</p>
+<p>Una vez que descargue esta libreria tiene que abrir con <strong>Matlab</strong> la carpeta descargada, luego, debe ejecutar el siguiente comando en consola:</p>
 
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; generate_groupnames</pre></div>
 
-<p>Esta función creará los archivos <em>gravel_groupname.mat</em> y <em>sand_groupname.mat</em> los cuales contendrán listas con valores para poder ser usados en el futuro de forma rápida.</p>
+<p>Esta función creará los archivos binarios <em>gravel_groupname.mat</em> y <em>sand_groupname.mat</em> los cuales contendrán listas con las tablas de clasificación para poder ejecutar el resto de las funciones del programa.</p>
 
-<p>Una vez hecho lo anterior se puede obtener el nombre del grupo de las gravas con la función <code>get_gravel_group_name</code> y de las arenas con la función <code>get_sand_group_name</code>. Para obtener el símbolo del grupo de las gravas se cuenta con la función <code>get_gravel_group_symbol</code> y <code>get_sand_group_name</code> para el caso de las arenas.</p>
+<h2>
+<a id="funciones-disponibles" class="anchor" href="#funciones-disponibles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Funciones disponibles</h2>
 
-<p>Dichas funciones requieren de los siguientes parámetros:</p>
+<p>Una vez que los archivos <em>gravel_groupname.mat</em> y <em>sand_groupname.mat</em> hayan sido creados puede hacer uso de las funciones del programa.</p>
+
+<p>Las funciones disponibles son las siguientes:</p>
+
+<ul>
+<li>
+<a href="#function1"><code>load_granulometry_data</code></a>: Cargar un archivo de datos granulométricos.</li>
+<li>
+<a href="#function2"><code>create_granulometry_table</code></a>: Crear una tabla granulométrica.</li>
+<li>
+<a href="#function3"><code>print_cell_table</code></a>: Imprimir en consola la tabla granulométrica.</li>
+<li>
+<a href="#function4"><code>get_composition_list</code></a>: Obtener la cantidad de gravas, finos y arena de una tabla granulométrica.</li>
+<li>
+<a href="#function5"><code>calculate_d</code></a>: Obtener los valores D10, D30, D60, Dn.</li>
+<li>
+<a href="#function6"><code>calculate_cc</code></a>: Calcular el parametro del coeficiente de forma a partir de una tabla ranulométrica.</li>
+<li>
+<a href="#function7"><code>calculate_cu</code></a>: Calcular el parametro del coeficiente de uniformidad a partir de una tabla granulométrica.</li>
+<li>
+<a href="#function8"><code>plot_granulometry_table</code></a>: Plotear una curva granulométrica.</li>
+<li>
+<a href="#function9"><code>get_classification_groupname</code></a>: Obtener el nombre de grupo de un suelo (clasificación) a partir de una tabla granulométrica.</li>
+<li>
+<a href="#function10"><code>get_gravel_group_name</code></a>: Obtener el nombre de grupo de una grava a partir de una serie de parámetros.</li>
+<li>
+<a href="#function11"><code>get_sand_group_name</code></a>: Obtener el nombre de grupo de una arena a partir de una serie de parámetros.</li>
+<li>
+<a href="#function12"><code>get_classification_groupsymbol</code></a>: Obtener el símbolo de grupo de un suelo (clasificación) a partir de una tabla granulométrica.</li>
+<li>
+<a href="#function13"><code>get_gravel_group_symbol</code></a>: Obtener el simbolo de grupo de una grava a partir de una serie de parámetros.</li>
+<li>
+<a href="#function14"><code>get_sand_group_symbol</code></a>: Obtener el simbolo de grupo de una arena a partir de una serie de parámetros.</li>
+</ul>
+
+<h3>
+<a id="detalles-de-las-funciones" class="anchor" href="#detalles-de-las-funciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Detalles de las funciones</h3>
+
+<p><a id="function1"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; load_granulometry_data( file )
+    file: String con la ubicación del archivo a cargar.
+
+    Retorna: Lista con los valores cargados y parseados a números.</pre></div>
+
+<p><a id="function2"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; create_granulometry_table( data )
+    data: Datos granulométricos resultantes de la función load_granulometry_data.
+
+    Retorna: Tabla granulométrica usada por la mayoría de las funciones.</pre></div>
+
+<p><a id="function3"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; print_cell_table( c )
+    c: Tabla a imprimir.</pre></div>
+
+<p><a id="function4"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_composition_list( granulometry_table )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+
+    Retorna: Lista de la forma [gravas, arena, fino]</pre></div>
+
+<p><a id="function5"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; calculate_d( granulometry_table, n )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    n: Pocentaje que pasa.
+
+    Retorna: Valor de D_n.</pre></div>
+
+<p><a id="function6"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; calculate_cc( granulometry_table )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+
+    Retorna: Valor del coeficiente de curvatura.</pre></div>
+
+<p><a id="function7"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; calculate_cu( granulometry_table )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+
+    Retorna: Valor del coeficiente de uniformidad.</pre></div>
+
+<p><a id="function8"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; plot_granulometry_table( granulometry_table, diameter_scale )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    diameter_scale: Escala del eje x (eje del diámetro).</pre></div>
+
+<p><a id="function9"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_classification_groupname( granulometry_table, fines )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    fines: Nombre del fino, string (ML, MH, CL-CH, CL-ML, CL-CH, CL-ML).
+
+    Retorna: Nombre de grupo del suelo definido por la tabla granulométrica y su respectivo fino.</pre></div>
+
+<p><a id="function10"></a></p>
 
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_name( pfines, cu, cc, fines, psand )
     pfines: Porcentaje de finos en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
     cu: Valor del coef. de uniformidad en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
     cc: Valor del coef. de forma en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
     fines: Nombre del fino, string.
-    psand: Porcentaje de arena en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.</pre></div>
+    psand: Porcentaje de arena en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
+
+    Retorna: Nombre de grupo de una grava definida por los parámetros.</pre></div>
+
+<p><a id="function11"></a></p>
 
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_sand_group_name( pfines, cu, cc, fines, pgravel )
     pfines: Porcentaje de finos en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
     cu: Valor del coef. de uniformidad en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
     cc: Valor del coef. de forma en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
     fines: Nombre del fino, string.
-    pgravel: Porcentaje de grava en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.</pre></div>
+    pgravel: Porcentaje de grava en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
 
-<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_sand_group_symbol( pfines, cu, cc, fines )
-    pfines: Porcentaje de finos en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
-    cu: Valor del coef. de uniformidad en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
-    cc: Valor del coef. de forma en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
-    fines: Nombre del fino, string.</pre></div>
+    Retorna: Nombre de grupo de una arena definida por los parámetros.</pre></div>
+
+<p><a id="function12"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_classification_groupsymbol( granulometry_table, fines )
+    granulometry_table: Tabla granulométrica resultante de create_granulometry_table.
+    fines: Nombre del fino, string (ML, MH, CL-CH, CL-ML, CL-CH, CL-ML).
+
+    Retorna: Símbolo de grupo del suelo definido por la tabla granulométrica y su respectivo fino.</pre></div>
+
+<p><a id="function13"></a></p>
 
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_symbol( pfines, cu, cc, fines )
     pfines: Porcentaje de finos en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
     cu: Valor del coef. de uniformidad en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
     cc: Valor del coef. de forma en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
-    fines: Nombre del fino, string.</pre></div>
+    fines: Nombre del fino, string.
+
+    Retorna: Símbolo de grupo de una grava definida por los parámetros.</pre></div>
+
+<p><a id="function14"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_sand_group_symbol( pfines, cu, cc, fines )
+    pfines: Porcentaje de finos en el suelo, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
+    cu: Valor del coef. de uniformidad en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
+    cc: Valor del coef. de forma en la muestra, entre <span class="pl-c1">0</span> y <span class="pl-c1">100</span>.
+    fines: Nombre del fino, string.
+
+    Retorna: Símbolo de grupo de una arena definida por los parámetros.</pre></div>
 
 <h2>
 <a id="ejemplos" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ejemplos</h2>
 
+<p><a id="datos"></a></p>
+
 <ul>
+<li>
+<p>Cargar el archivo de datos granulométricos '<a href="https://github.com/ppizarror/clasificacion-suelos-gruesos/blob/master/example_data.txt">example_data.txt</a>':</p>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; data = load_granulometry_data(<span class="pl-s"><span class="pl-pds">'</span>example_data.txt<span class="pl-pds">'</span></span>);</pre></div>
+</blockquote>
+
+<p><a id="tabla_granum"></a></p>
+
+<ul>
+<li>Crear una tabla granulométrica a partir de los <a href="#datos">datos cargados</a>.</li>
+</ul>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; granulometry_table = create_granulometry_table(data);</pre></div>
+</blockquote>
+</li>
+<li>
+<p>Imprimir en consola la <a href="tabla_granum">tabla granulométrica</a> cargada:</p>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; print_cell_table(granulometry_table);
+      <span class="pl-c1">1.0000</span>   <span class="pl-c1">25.4000</span>    <span class="pl-c1">94.0000</span>   <span class="pl-c1">10.5870</span>    <span class="pl-c1">10.5870</span>   <span class="pl-c1">89.4130</span>
+      <span class="pl-c1">4.0000</span>    <span class="pl-c1">4.7500</span>   <span class="pl-c1">225.0000</span>    <span class="pl-c1">8.1023</span>    <span class="pl-c1">18.6892</span>   <span class="pl-c1">81.3108</span>
+     <span class="pl-c1">10.0000</span>    <span class="pl-c1">2.0000</span>   <span class="pl-c1">750.0000</span>   <span class="pl-c1">27.0076</span>    <span class="pl-c1">45.6968</span>   <span class="pl-c1">54.3032</span>
+     <span class="pl-c1">20.0000</span>    <span class="pl-c1">0.8500</span>   <span class="pl-c1">405.0000</span>   <span class="pl-c1">14.5841</span>    <span class="pl-c1">60.2809</span>   <span class="pl-c1">39.7191</span>
+     <span class="pl-c1">40.0000</span>    <span class="pl-c1">0.4250</span>   <span class="pl-c1">165.0000</span>    <span class="pl-c1">5.9417</span>    <span class="pl-c1">66.2225</span>   <span class="pl-c1">33.7775</span>
+     <span class="pl-c1">60.0000</span>    <span class="pl-c1">0.2500</span>   <span class="pl-c1">189.0000</span>    <span class="pl-c1">6.8059</span>    <span class="pl-c1">73.0284</span>   <span class="pl-c1">26.9716</span>
+    <span class="pl-c1">100.0000</span>    <span class="pl-c1">0.1500</span>   <span class="pl-c1">174.0000</span>    <span class="pl-c1">6.2658</span>    <span class="pl-c1">79.2942</span>   <span class="pl-c1">20.7058</span>
+    <span class="pl-c1">200.0000</span>    <span class="pl-c1">0.0750</span>   <span class="pl-c1">336.0000</span>   <span class="pl-c1">12.0994</span>    <span class="pl-c1">91.3936</span>    <span class="pl-c1">8.6064</span>
+    <span class="pl-c1">0</span>           <span class="pl-c1">0</span>        <span class="pl-c1">239.0000</span>    <span class="pl-c1">8.6064</span>   <span class="pl-c1">100.0000</span>    <span class="pl-c1">0.0000</span></pre></div>
+</blockquote>
+
+<ul>
+<li>Obtener la cantidad de gravas, finos y arena de una <a href="tabla_granum">tabla granulométrica</a>:</li>
+</ul>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_composition_list(granulometry_table);
+<span class="pl-k">ans</span> = [<span class="pl-c1">18.6892</span>   <span class="pl-c1">72.7044</span>    <span class="pl-c1">8.6064</span>] </pre></div>
+</blockquote>
+</li>
+<li>
+<p>Obtener los valores D10, D30, D60, Dn a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada:</p>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; calculate_d(granulometry_table, <span class="pl-c1">10</span>)
+<span class="pl-k">ans</span> = <span class="pl-c1">0.083638</span> 
+
+&gt;&gt;&gt; calculate_d(granulometry_table, <span class="pl-c1">30</span>)
+<span class="pl-k">ans</span> = <span class="pl-c1">0.327870</span>
+
+&gt;&gt;&gt; calculate_d(granulometry_table, <span class="pl-c1">60</span>)
+<span class="pl-k">ans</span> = <span class="pl-c1">2.580067</span>   </pre></div>
+</blockquote>
+
+<ul>
+<li>Obtener los parámetros Cc (coef. de forma) y Cu (coef. de uniformidad) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada:</li>
+</ul>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; calculate_cc(granulometry_table)
+<span class="pl-k">ans</span> = <span class="pl-c1">0.498159</span>
+
+&gt;&gt;&gt; calculate_cu(granulometry_table)
+<span class="pl-k">ans</span> = <span class="pl-c1">30.847875</span>
+</pre></div>
+</blockquote>
+
+<ul>
+<li>Plotear una <a href="tabla_granum">tabla granulométrica</a> cargada, con escala de diámetro en milímetros (mm):</li>
+</ul>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; plot_granulometry_table(table, <span class="pl-s"><span class="pl-pds">'</span>mm<span class="pl-pds">'</span></span>);</pre></div>
+
+<p><img src="https://github.com/ppizarror/ppizarror.github.io/blob/master/resources/images/granulometric-graph.png?raw=true" alt="Curva de distribución" height="35%" align="center"></p>
+</blockquote>
+</li>
+<li>
+<p>Obtener el nombre de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:</p>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_classification_groupname(granulometry_table, <span class="pl-s"><span class="pl-pds">'</span>ML<span class="pl-pds">'</span></span>);
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>Poorly graded sand with silt and gravel<span class="pl-pds">'</span></span></pre></div>
+</blockquote>
+
+<ul>
+<li>Obtener el símbolo de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:</li>
+</ul>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_classification_groupsymbol(table, <span class="pl-s"><span class="pl-pds">'</span>ML<span class="pl-pds">'</span></span>);
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>SP-SM<span class="pl-pds">'</span></span></pre></div>
+</blockquote>
+</li>
 <li>
 <p>Obtener nombre de grupo de una grava con 8% de finos y 15% de arena, Cu=7 y Cc=2.4, el fino es ML:</p>
 
 <blockquote>
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_name(<span class="pl-c1">8</span>, <span class="pl-c1">7</span>, <span class="pl-c1">2.4</span>, <span class="pl-s"><span class="pl-pds">'</span>ML<span class="pl-pds">'</span></span>, <span class="pl-c1">15</span>)
-<span class="pl-k">ans</span> = Well-graded gravel with silt <span class="pl-k">and</span> sand</pre></div>
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>Well-graded gravel with silt and sand<span class="pl-pds">'</span></span></pre></div>
 </blockquote>
 
 <ul>
-<li>Obtener nombre de grupo de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino.</li>
+<li>Obtener nombre de grupo de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino:</li>
 </ul>
 
 <blockquote>
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_name(<span class="pl-c1">4</span>, <span class="pl-c1">2</span>, <span class="pl-c1">0.8</span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">13</span>)
-<span class="pl-k">ans</span> = Poorly graded gravel</pre></div>
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>Poorly graded gravel<span class="pl-pds">'</span></span></pre></div>
 </blockquote>
 </li>
 <li>
@@ -103,33 +322,7 @@
 
 <blockquote>
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_name(<span class="pl-c1">25</span>, <span class="pl-c1">0</span>, <span class="pl-c1">0</span>, <span class="pl-s"><span class="pl-pds">'</span>CL-ML<span class="pl-pds">'</span></span>, <span class="pl-c1">19</span>)
-<span class="pl-k">ans</span> = Silty, clayey gravel with sand</pre></div>
-</blockquote>
-
-<ul>
-<li>Obtener símbolo de grupo de una grava con 2% de finos, Cu=8.5 y Cc=1.2, sin fino definido:</li>
-</ul>
-
-<blockquote>
-<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_symbol(<span class="pl-c1">2</span>, <span class="pl-c1">8.5</span>, <span class="pl-c1">1.2</span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>)
-<span class="pl-k">ans</span> = GW    </pre></div>
-</blockquote>
-</li>
-<li>
-<p>Obtener símbolo de grupo de una grava con 9.9% de finos, Cu=1.1 y Cc=6.6, con fino CL-CH:</p>
-
-<blockquote>
-<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_symbol(<span class="pl-c1">9.9</span>, <span class="pl-c1">1.1</span>, <span class="pl-c1">6.6</span>, <span class="pl-s"><span class="pl-pds">'</span>CL-CH<span class="pl-pds">'</span></span>)
-<span class="pl-k">ans</span> = GP-GC    </pre></div>
-</blockquote>
-
-<ul>
-<li>Obtener nombre de grupo de una arena con 30% de finos y 3% de grava, Cu y Cc sin definir, el fino es CL:</li>
-</ul>
-
-<blockquote>
-<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_sand_group_name(<span class="pl-c1">30</span>, <span class="pl-c1">0</span>, <span class="pl-c1">0</span>, <span class="pl-s"><span class="pl-pds">'</span>CL<span class="pl-pds">'</span></span>, <span class="pl-c1">3</span>)
-<span class="pl-k">ans</span> = Clayey sand</pre></div>
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>Silty, clayey gravel with sand<span class="pl-pds">'</span></span></pre></div>
 </blockquote>
 
 <ul>
@@ -138,7 +331,7 @@
 
 <blockquote>
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_sand_group_name(<span class="pl-c1">3</span>, <span class="pl-c1">10</span>, <span class="pl-c1">1.5</span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">44</span>)
-<span class="pl-k">ans</span> = Well-graded sand with gravel</pre></div>
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>Well-graded sand with gravel<span class="pl-pds">'</span></span></pre></div>
 </blockquote>
 
 <ul>
@@ -147,7 +340,35 @@
 
 <blockquote>
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_sand_group_name(<span class="pl-c1">7</span>, <span class="pl-c1">4</span>, <span class="pl-c1">0.98</span>, <span class="pl-s"><span class="pl-pds">'</span>MH<span class="pl-pds">'</span></span>, <span class="pl-c1">3</span>)
-<span class="pl-k">ans</span> = Poorly graded sand with silt</pre></div>
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>Poorly graded sand with silt<span class="pl-pds">'</span></span>
+</pre></div>
+</blockquote>
+
+<ul>
+<li>Obtener nombre de grupo de una arena con 30% de finos y 3% de grava, Cu y Cc sin definir, el fino es CL:</li>
+</ul>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_sand_group_name(<span class="pl-c1">30</span>, <span class="pl-c1">0</span>, <span class="pl-c1">0</span>, <span class="pl-s"><span class="pl-pds">'</span>CL<span class="pl-pds">'</span></span>, <span class="pl-c1">3</span>)
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>Clayey sand<span class="pl-pds">'</span></span>
+</pre></div>
+</blockquote>
+
+<ul>
+<li>Obtener símbolo de grupo de una grava con 2% de finos, Cu=8.5 y Cc=1.2, sin fino definido:</li>
+</ul>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_symbol(<span class="pl-c1">2</span>, <span class="pl-c1">8.5</span>, <span class="pl-c1">1.2</span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>)
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>GW<span class="pl-pds">'</span></span>   </pre></div>
+</blockquote>
+</li>
+<li>
+<p>Obtener símbolo de grupo de una grava con 9.9% de finos, Cu=1.1 y Cc=6.6, con fino CL-CH:</p>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_gravel_group_symbol(<span class="pl-c1">9.9</span>, <span class="pl-c1">1.1</span>, <span class="pl-c1">6.6</span>, <span class="pl-s"><span class="pl-pds">'</span>CL-CH<span class="pl-pds">'</span></span>)
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>GP-GC<span class="pl-pds">'</span></span>   </pre></div>
 </blockquote>
 
 <ul>
@@ -156,7 +377,7 @@
 
 <blockquote>
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; get_sand_group_symbol(<span class="pl-c1">7</span>, <span class="pl-c1">4</span>, <span class="pl-c1">0.98</span>, <span class="pl-s"><span class="pl-pds">'</span>MH<span class="pl-pds">'</span></span>)
-<span class="pl-k">ans</span> = SP-SM</pre></div>
+<span class="pl-k">ans</span> = <span class="pl-s"><span class="pl-pds">'</span>SP-SM<span class="pl-pds">'</span></span></pre></div>
 </blockquote>
 
 <h2>
@@ -170,7 +391,7 @@
         </section>
 
         <footer>
-          Clasificacion-suelos-gruesos is maintained by <a href="https://github.com/ppizarror">ppizarror</a><br>
+          Clasificación de suelos gruesos is maintained by <a href="https://github.com/ppizarror">ppizarror</a><br>
           This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
 
