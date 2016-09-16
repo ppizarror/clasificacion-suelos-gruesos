@@ -217,21 +217,21 @@ Las funciones disponibles son las siguientes:
     ans = 30.847875
 
 
-- Plotear una <a href="tabla_granum">tabla granulométrica</a> cargada, con escala de diámetro en milímetros (mm).
+- Plotear una <a href="tabla_granum">tabla granulométrica</a> cargada, con escala de diámetro en milímetros (mm):
 
     >```matlab
        >>>> plot_granulometry_table(table, 'mm');
     ```
     ><img src='https://github.com/ppizarror/ppizarror.github.io/blob/master/resources/images/granulometric-graph.png?raw=true' alt='Curva de distribución' height='35%' align='center'>
     
-- Obtener el nombre de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML.
+- Obtener el nombre de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:
 
     >```matlab
        >>>> get_classification_groupname(granulometry_table, 'ML');
     ans = 'Poorly graded sand with silt and gravel'
     ```
     
-- Obtener el símbolo de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML.
+- Obtener el símbolo de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:
 
     >```matlab
        >>>> get_classification_groupsymbol(table, 'ML');
@@ -245,7 +245,7 @@ Las funciones disponibles son las siguientes:
     ans = 'Well-graded gravel with silt and sand'
     ```
 
-- Obtener nombre de grupo de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino.
+- Obtener nombre de grupo de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino:
 
     >```matlab
        >>>> get_gravel_group_name(4, 2, 0.8, '', 13)
