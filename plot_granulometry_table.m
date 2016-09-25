@@ -6,6 +6,7 @@ function plot_granulometry_table( granulometry_table, diameter_scale )
 %   create_granulometry_table.
 %   diameter_scale: Escala del eje x (eje del diámetro).
 
+    set(gcf, 'renderer', 'opengl')
     lng = length(granulometry_table);
     x = 1:lng-1;
     y = 1:lng-1;
@@ -14,12 +15,12 @@ function plot_granulometry_table( granulometry_table, diameter_scale )
         x(i)=granulometry_table{i}(2);
         y(i)=granulometry_table{i}(6);
     end
-    
-    semilogx(x,y,'-o','LineWidth', 2);
+   
+    semilogx(x,y, '-s', 'color', [0.5 0.5 0.5],'LineWidth', 2, 'MarkerFaceColor', [.5 .5 .5], 'MarkerSize',5);
     ylim([0, 100]);
     grid
     xlabel(['Particle diameter [', diameter_scale, ']']);
-    ylabel('Volume [%]');
+    ylabel('% Passing');
     title('Particle size distribution curve');
 
 end

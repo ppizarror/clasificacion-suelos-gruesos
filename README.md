@@ -17,6 +17,7 @@ Las funciones disponibles son las siguientes:
 
 + <a href="#function1">```load_granulometry_data```</a>: Cargar un archivo de datos granulométricos.
 + <a href="#function2">```create_granulometry_table```</a>: Crear una tabla granulométrica.
++ <a href="#function22">```load_granulometry_table```</a>: Crear una tabla granulométrica a partir de un archivo de datos granulométricos.
 + <a href="#function3">```print_cell_table```</a>: Imprimir en consola la tabla granulométrica.
 + <a href="#function4">```get_composition_list```</a>: Obtener la cantidad de gravas, finos y arena de una tabla granulométrica.
 + <a href="#function5">```calculate_d```</a>: Obtener los valores D10, D30, D60, Dn.
@@ -43,6 +44,14 @@ Las funciones disponibles son las siguientes:
 ```matlab
 >>> create_granulometry_table( data )
     data: Datos granulométricos resultantes de la función load_granulometry_data.
+    
+    Retorna: Tabla granulométrica usada por la mayoría de las funciones.
+```
+
+<a id="function22"></a>
+```matlab
+>>> load_granulometry_table( file )
+    file: String con la ubicación del archivo a cargar.
     
     Retorna: Tabla granulométrica usada por la mayoría de las funciones.
 ```
@@ -172,6 +181,12 @@ Las funciones disponibles son las siguientes:
        >>>> granulometry_table = create_granulometry_table(data);
     ```
  
+- Crear una tabla granulométrica a partir de '<a href="https://github.com/ppizarror/clasificacion-suelos-gruesos/blob/master/example_data.txt">example_data.txt</a>'.
+
+    >```matlab
+       >>>> granulometry_table = load_granulometry_table('example_data.txt');
+    ```
+ 
 - Imprimir en consola la <a href="tabla_granum">tabla granulométrica</a> cargada:
 
     >```matlab
@@ -220,7 +235,7 @@ Las funciones disponibles son las siguientes:
 - Plotear una <a href="tabla_granum">tabla granulométrica</a> cargada, con escala de diámetro en milímetros (mm):
 
     >```matlab
-       >>>> plot_granulometry_table(table, 'mm');
+       >>>> plot_granulometry_table(granulometry_table, 'mm');
     ```
     ><img src='https://github.com/ppizarror/ppizarror.github.io/blob/master/resources/images/granulometric-graph.png?raw=true' alt='Curva de distribución' height='35%' align='center'>
     
