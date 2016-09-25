@@ -42,7 +42,7 @@
         <section id="downloads" class="clearfix">
 		  <center>
 			  <a href="https://github.com/ppizarror/clasificacion-suelos-gruesos" id="view-on-github" class="button" style="margin-left:70px"><span>Ver en GitHub</span></a>
-			  <a href="https://github.com/ppizarror/clasificacion-suelos-gruesos/releases/download/1.9/clasificacion-suelos-gruesos.zip" id="download-zip" class="button" style="width: 284px;margin-left:19px;"><span>Descargar última versión (1.9)</span></a>
+			  <a href="https://github.com/ppizarror/clasificacion-suelos-gruesos/releases/download/2.0/clasificacion-suelos-gruesos.zip" id="download-zip" class="button" style="width: 284px;margin-left:19px;"><span>Descargar última versión (2.0)</span></a>
 		  </center>
 		</section>
 
@@ -75,6 +75,8 @@
 <a href="#function1"><code>load_granulometry_data</code></a>: Cargar un archivo de datos granulométricos.</li>
 <li>
 <a href="#function2"><code>create_granulometry_table</code></a>: Crear una tabla granulométrica.</li>
+<li>
+<a href="#function22"><code>load_granulometry_table</code></a>: Crear una tabla granulométrica a partir de un archivo de datos granulométricos.</li>
 <li>
 <a href="#function3"><code>print_cell_table</code></a>: Imprimir en consola la tabla granulométrica.</li>
 <li>
@@ -115,6 +117,13 @@
 
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; create_granulometry_table( data )
     data: Datos granulométricos resultantes de la función load_granulometry_data.
+
+    Retorna: Tabla granulométrica usada por la mayoría de las funciones.</pre></div>
+
+<p><a id="function22"></a></p>
+
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; load_granulometry_table( file )
+    file: String con la ubicación del archivo a cargar.
 
     Retorna: Tabla granulométrica usada por la mayoría de las funciones.</pre></div>
 
@@ -239,6 +248,16 @@
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; granulometry_table = create_granulometry_table(data);</pre></div>
 </blockquote>
 </li>
+
+<ul>
+<li>Crear una tabla granulométrica a partir de '<a href="https://github.com/ppizarror/clasificacion-suelos-gruesos/blob/master/example_data.txt">example_data.txt</a>':</li>
+</ul>
+
+<blockquote>
+<div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; granulometry_table = load_granulometry_table(<span class="pl-s"><span class="pl-pds">'</span>example_data.txt<span class="pl-pds">'</span></span>);</pre></div>
+</blockquote>
+</li>
+
 <li>
 <p>Imprimir en consola la <a href="tabla_granum">tabla granulométrica</a> cargada:</p>
 
@@ -269,7 +288,7 @@
 
 <blockquote>
 <div class="highlight highlight-source-matlab"><pre>&gt;&gt;&gt; calculate_d(granulometry_table, <span class="pl-c1">10</span>)
-<span class="pl-k">ans</span> = <span class="pl-c1">0.083638</span> 
+<span class="pl-k">ans</span> = <span class="pl-c1">0.083638</span>
 
 &gt;&gt;&gt; calculate_d(granulometry_table, <span class="pl-c1">30</span>)
 <span class="pl-k">ans</span> = <span class="pl-c1">0.327870</span>
@@ -412,7 +431,7 @@
           Clasificación de suelos gruesos fué desarrollado por <a href="https://github.com/ppizarror">ppizarror</a><br>
         </footer>
 
-        
+
       </div>
     </div>
   </body>
