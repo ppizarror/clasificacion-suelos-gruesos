@@ -25,6 +25,7 @@ function table = create_granulometry_table( data )
             error('Error when calculating total mass of granulometry data.');
         end
     end
+    total_mass
     
     % Se completa la tabla
     for i=1:data_len

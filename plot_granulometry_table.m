@@ -19,9 +19,9 @@ function plot_granulometry_table( granulometry_table, diameter_scale )
     semilogx(x,y, '-s', 'color', [0.5 0.5 0.5],'LineWidth', 2, 'MarkerFaceColor', [.5 .5 .5], 'MarkerSize',5);
     ylim([0, 100]);
     grid
-    xlabel(['Particle diameter [', diameter_scale, ']']);
-    ylabel('% Passing');
-    title('Particle size distribution curve');
+    xlabel(['Tamaño de partícula [', diameter_scale, ']']);
+    ylabel('Porcentaje que pasa Pi [%]');
+    title('Curva granulométrica');
 
 end
 

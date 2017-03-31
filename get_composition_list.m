@@ -18,10 +18,10 @@ function composition_list = get_composition_list( granulometry_table )
             if granulometry_table{i}(1) < granulometry_table{i+1}(1)
                 decr=false;
             end
-            total_gravel = total_gravel + granulometry_table{i}(4);
             if and(granulometry_table{i+1}(1)>4, ~decr);
                 break
             end
+            total_gravel = total_gravel + granulometry_table{i}(4);
         end
     catch
         disp('Error when calculating total gravel in granulometry table.');

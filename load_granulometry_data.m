@@ -37,8 +37,8 @@ function list = load_granulometry_data( file )
         end
         
         % Se reemplazan elementos en valores
-        m_r = m;
         m = strrep(m, '#', '');
+        m = strrep(m, '', '');
         m = strrep(m, 'No.', '');
         m = strtrim(m);
         m = strrep(m, '"', '');

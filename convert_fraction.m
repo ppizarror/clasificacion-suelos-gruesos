@@ -16,7 +16,14 @@ function v = convert_fraction( f )
                 if strcmp(g, '')
                    v = 0;
                 else
-                    v = str2double(g);
+                    g2 = strsplit(g{1}, '/');
+                    if length(g2)==2
+                        b = str2double(g2(1));
+                        c = str2double(g2(2));
+                        v = b/c;
+                    elseif length(g2) == 1
+                        v = str2double(g);
+                    end
                 end
             case 2
                 a = g{1};
@@ -34,6 +41,7 @@ function v = convert_fraction( f )
     end
     
     if strcmp(num2str(v),'NaN')
+        error(f)
         error('Error when converting number from fraction expression.');
     end
 
