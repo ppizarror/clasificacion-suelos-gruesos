@@ -1,4 +1,7 @@
 # Clasificación de suelos gruesos
+[![@ppizarror](http://ppizarror.com/resources/images/autor.svg)](http://ppizarror.com)
+[![Licencia GPL](http://ppizarror.com/resources/images/licenciagpl2.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+
 Esta libreria de **Matlab** permite obtener la clasificación de un suelo grueso a partir de una tabla granulométrica, la cual es cargada desde un archivo, o bien a partir de una serie de parametros como son el porcentaje de fino en una muestra, los valores del coeficiente de uniformidad *Cu* y coeficiente de forma *Cc*, el nombre del fino y el símbolo del grupo.
 
 ## Antes de partir
