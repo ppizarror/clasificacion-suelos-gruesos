@@ -173,26 +173,26 @@ Las funciones disponibles son las siguientes:
 <a id="datos"></a>
 - Cargar el archivo de datos granulométricos '<a href="https://github.com/ppizarror/clasificacion-suelos-gruesos/blob/master/example_data.txt">example_data.txt</a>':
 
-    >```matlab
+    ```matlab
        >>>> data = load_granulometry_data('example_data.txt');
     ```
 
 <a id="tabla_granum"></a>
 - Crear una tabla granulométrica a partir de los <a href="#datos">datos cargados</a>.
 
-    >```matlab
+    ```matlab
        >>>> granulometry_table = create_granulometry_table(data);
     ```
  
 - Crear una tabla granulométrica a partir de '<a href="https://github.com/ppizarror/clasificacion-suelos-gruesos/blob/master/example_data.txt">example_data.txt</a>'.
 
-    >```matlab
+    ```matlab
        >>>> granulometry_table = load_granulometry_table('example_data.txt');
     ```
  
 - Imprimir en consola la <a href="tabla_granum">tabla granulométrica</a> cargada:
 
-    >```matlab
+    ```matlab
        >>>> print_cell_table(granulometry_table);
           1.0000   25.4000    94.0000   10.5870    10.5870   89.4130
           4.0000    4.7500   225.0000    8.1023    18.6892   81.3108
@@ -207,14 +207,14 @@ Las funciones disponibles son las siguientes:
 
 - Obtener la cantidad de gravas, finos y arena de una <a href="tabla_granum">tabla granulométrica</a>:
 
-    >```matlab
+    ```matlab
        >>>> get_composition_list(granulometry_table);
     ans = [18.6892   72.7044    8.6064] 
     ```
 
 - Obtener los valores D10, D30, D60, Dn a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada:
 
-    >```matlab
+    ```matlab
        >>>> calculate_d(granulometry_table, 10)
     ans = 0.083638 
     
@@ -227,17 +227,18 @@ Las funciones disponibles son las siguientes:
 
 - Obtener los parámetros Cc (coef. de forma) y Cu (coef. de uniformidad) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada:
 
-    >```matlab
-       >>>> calculate_cc(granulometry_table)
+    ```matlab
+    >>>> calculate_cc(granulometry_table)
     ans = 0.498159
     
     >>>> calculate_cu(granulometry_table)
     ans = 30.847875
+    ```
 
 
 - Plotear una <a href="tabla_granum">tabla granulométrica</a> cargada, con escala de diámetro en milímetros (mm):
 
-    >```matlab
+    ```matlab
        >>>> plot_granulometry_table(granulometry_table, 'mm');
     ```
     ><img src='http://ppizarror.com/resources/images/granulometric-graph.png?raw=true' alt='Curva de distribución' height='35%' align='center'>
@@ -251,69 +252,69 @@ Las funciones disponibles son las siguientes:
     
 - Obtener el símbolo de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:
 
-    >```matlab
+    ```matlab
        >>>> get_classification_groupsymbol(table, 'ML');
     ans = 'SP-SM'
     ```
 
 - Obtener nombre de grupo de una grava con 8% de finos y 15% de arena, Cu=7 y Cc=2.4, el fino es ML:
 
-    >```matlab
+    ```matlab
        >>>> get_gravel_group_name(8, 7, 2.4, 'ML', 15)
     ans = 'Well-graded gravel with silt and sand'
     ```
 
 - Obtener nombre de grupo de una grava con 4% de finos y 13% de arena, Cu=2 y Cc=0.8, no tiene fino:
 
-    >```matlab
+    ```matlab
        >>>> get_gravel_group_name(4, 2, 0.8, '', 13)
     ans = 'Poorly graded gravel'
     ```
  
 - Obtener nombre de grupo de una grava con 25% de finos, sin Cu o Cc, con fino CL-ML y 19% de arena:
 
-    >```matlab
+    ```matlab
        >>>> get_gravel_group_name(25, 0, 0, 'CL-ML', 19)
     ans = 'Silty, clayey gravel with sand'
     ```
     
 - Obtener nombre de grupo de una arena con 3% de finos y 44% de grava, Cu=10 y Cc=1.5, fino sin definir:
 
-    >```matlab
+    ```matlab
        >>>> get_sand_group_name(3, 10, 1.5, '', 44)
     ans = 'Well-graded sand with gravel'
 
 - Obtener nombre de grupo de una arena con 7% de finos y 3% de grava, Cu=4 y Cc=0.98, fino MH:
 
-    >```matlab
+    ```matlab
        >>>> get_sand_group_name(7, 4, 0.98, 'MH', 3)
     ans = 'Poorly graded sand with silt'
     
 
 - Obtener nombre de grupo de una arena con 30% de finos y 3% de grava, Cu y Cc sin definir, el fino es CL:
 
-    >```matlab
+    ```matlab
        >>>> get_sand_group_name(30, 0, 0, 'CL', 3)
     ans = 'Clayey sand'
  
 
 - Obtener símbolo de grupo de una grava con 2% de finos, Cu=8.5 y Cc=1.2, sin fino definido:
 
-    >```matlab
+    ```matlab
        >>>> get_gravel_group_symbol(2, 8.5, 1.2, '')
     ans = 'GW'   
     ```
 
 - Obtener símbolo de grupo de una grava con 9.9% de finos, Cu=1.1 y Cc=6.6, con fino CL-CH:
 
-    >```matlab
+    ```matlab
        >>>> get_gravel_group_symbol(9.9, 1.1, 6.6, 'CL-CH')
     ans = 'GP-GC'   
     ```
  
 - Obtener símbolo de grupo de una arena con 7% de finos, Cu=4 y Cc=0.98, fino MH:
 
-    >```matlab
+    ```matlab
        >>>> get_sand_group_symbol(7, 4, 0.98, 'MH')
     ans = 'SP-SM'
     
