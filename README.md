@@ -240,7 +240,7 @@ Las funciones disponibles son las siguientes:
     >```matlab
        >>>> plot_granulometry_table(granulometry_table, 'mm');
     ```
-    ><img src='https://github.com/ppizarror/ppizarror.github.io/blob/master/resources/images/granulometric-graph.png?raw=true' alt='Curva de distribución' height='35%' align='center'>
+    ><img src='http://ppizarror.com/resources/images/granulometric-graph.png?raw=true' alt='Curva de distribución' height='35%' align='center'>
     
 - Obtener el nombre de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:
 
@@ -317,5 +317,8 @@ Las funciones disponibles son las siguientes:
        >>>> get_sand_group_symbol(7, 4, 0.98, 'MH')
     ans = 'SP-SM'
     
+## Licencia
+Este proyecto está licenciado bajo GPLv2 (GNU General Public License, version 2) [https://www.gnu.org/licenses/gpl-2.0.html].
+    
 ## Autor
-<a href="http://ppizarror.com">Pablo Pizarro R.</a>, 2016.
+<a href="http://ppizarror.com">Pablo Pizarro R.</a> | 2016.
