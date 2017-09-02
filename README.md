@@ -245,7 +245,7 @@ Las funciones disponibles son las siguientes:
     
 - Obtener el nombre de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:
 
-    >```matlab
+    ```matlab
        >>>> get_classification_groupname(granulometry_table, 'ML');
     ans = 'Poorly graded sand with silt and gravel'
     ```
