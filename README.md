@@ -1,6 +1,13 @@
-# Clasificación de suelos gruesos
-[![@ppizarror](http://ppizarror.com/resources/images/autor.svg)](http://ppizarror.com)
-[![Licencia GPL](http://ppizarror.com/resources/images/licenciagpl2.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+<h1 align="center">
+  <a href="http://ppizarror.com/clasificacion-suelos-gruesos/" title="Clasificación de suelos gruesos">
+    <img alt="Clasificación de suelos gruesos" src="http://ppizarror.com/resources/other/matlab.png" width="200px" height="200px" />
+  </a>
+  <br /><br />
+  Clasificación de suelos gruesos</h1>
+<p align="center">Clasificación de suelos gruesos, CI4401-1 Geotecnia 2016, Universidad de Chile</p>
+<div align="center"><a href="http://ppizarror.com"><img alt="@ppizarror" src="http://ppizarror.com/badges/autor.svg" /></a>
+<a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html"><img alt="GPL V2.0" src="http://ppizarror.com/badges/licenciagpl2.svg" /></a>
+</div><br />
 
 Esta libreria de **Matlab** permite obtener la clasificación de un suelo grueso a partir de una tabla granulométrica, la cual es cargada desde un archivo, o bien a partir de una serie de parametros como son el porcentaje de fino en una muestra, los valores del coeficiente de uniformidad *Cu* y coeficiente de forma *Cc*, el nombre del fino y el símbolo del grupo.
 
@@ -319,7 +326,7 @@ Las funciones disponibles son las siguientes:
     ans = 'SP-SM'
     
 ## Licencia
-Este proyecto está licenciado bajo GPLv2 (GNU General Public License, version 2) [https://www.gnu.org/licenses/gpl-2.0.html].
-    
+Este proyecto está licenciado bajo GPLv2 [https://www.gnu.org/licenses/gpl-2.0.html]
+
 ## Autor
-<a href="http://ppizarror.com">Pablo Pizarro R.</a> | 2016.
+<a href="http://ppizarror.com" title="ppizarror">Pablo Pizarro R.</a> | 2016
