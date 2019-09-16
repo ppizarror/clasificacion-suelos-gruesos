@@ -240,7 +240,7 @@ Las funciones disponibles son las siguientes:
     ```matlab
     >>>> plot_granulometry_table(granulometry_table, 'mm');
     ```
-    ><img src='https://res.ppizarror.com/images/granulometric-graph.png' alt='Curva de distribución' height='35%' align='center'>
+    ><img src='https://res.ppizarror.com/images/granulometria/granulometric-graph.png' alt='Curva de distribución' height='35%' align='center'>
     
 - Obtener el nombre de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:
 
