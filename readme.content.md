@@ -1,7 +1,9 @@
 Esta libreria de **Matlab** permite obtener la clasificación de un suelo grueso a partir de una tabla granulométrica, la cual es cargada desde un archivo, o bien a partir de una serie de parametros como son el porcentaje de fino en una muestra, los valores del coeficiente de uniformidad *Cu* y coeficiente de forma *Cc*, el nombre del fino y el símbolo del grupo.
 
 ## Antes de partir
+
 Una vez que descargue esta libreria tiene que abrir con **Matlab** la carpeta descargada, luego, debe ejecutar el siguiente comando en consola:
+
 ```matlab
 >>> generate_groupnames
 ```
@@ -31,6 +33,7 @@ Las funciones disponibles son las siguientes:
 + <a href="#function14">```get_sand_group_symbol```</a>: Obtener el simbolo de grupo de una arena a partir de una serie de parámetros.
 
 ### Detalles de las funciones
+
 <a id="function1"></a>
 ```matlab
 >>> load_granulometry_data( file )
@@ -237,7 +240,7 @@ Las funciones disponibles son las siguientes:
     ```matlab
     >>>> plot_granulometry_table(granulometry_table, 'mm');
     ```
-    ><img src='http://ppizarror.com/resources/images/granulometric-graph.png?raw=true' alt='Curva de distribución' height='35%' align='center'>
+    ><img src='https://res.ppizarror.com/images/granulometric-graph.png' alt='Curva de distribución' height='35%' align='center'>
     
 - Obtener el nombre de grupo de un suelo (clasificación) a partir de la <a href="tabla_granum">tabla granulométrica</a> cargada, con tipo de finos ML:
 
@@ -315,4 +318,5 @@ Las funciones disponibles son las siguientes:
     ans = 'SP-SM'
     
 ## Licencia
+
 Este proyecto está licenciado bajo GPLv2 [https://www.gnu.org/licenses/gpl-2.0.html]
